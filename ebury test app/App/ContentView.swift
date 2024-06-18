@@ -22,6 +22,7 @@ struct ContentView: View {
                         Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
                     }
                 }
+                
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
@@ -37,6 +38,7 @@ struct ContentView: View {
         } detail: {
             Text("Select an item")
         }
+        .foregroundColor(Color(hex: 0xf9f9f9))
     }
 
     private func addItem() {

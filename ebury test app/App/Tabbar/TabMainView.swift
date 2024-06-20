@@ -1,33 +1,40 @@
-//
-//  TabMainView.swift
-//  ebury test app
-//
-//  Created by Joel Sene on 14/06/2024.
-//
-
 import SwiftUI
 
 struct TabMainView: View {
+    @Environment(\.strings) var constantsStore // Environment variable for accessing localized strings
+    
     var body: some View {
         TabView {
             Group {
                 HomeView()
                     .tabItem {
-                        Label("Menu", systemImage: "list.dash")
+                        Label(
+                            constantsStore.tabBarWalletTitle,
+                            image: constantsStore.tabBarWalletIcon
+                        )
+                        .fontWeight(.semibold)
+                        .font(.headline)
                     }
                 
-                ContentView()
+                ProductsView()
                     .tabItem {
-                        Label("Order", systemImage: "square.and.pencil")
+                        Label(
+                            constantsStore.tabBarProductsTitle,
+                            image: constantsStore.tabBarProductsIcon
+                        )
+                        .fontWeight(.semibold)
+                        .font(.headline)
                     }
             }
-            .toolbarBackground(.visible, for: .tabBar)
         }
     }
 }
 
+// Preview for TabMainView with dependencies
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         TabMainView()
+            .environmentObject(HomeViewModel(modelContext: nil)) // Provide a mock HomeViewModel without modelContext
+            .modelContainer(previewContainer) // Use the previewContainer for preview data
     }
 }

@@ -1,39 +1,76 @@
 import SwiftUI
 
 struct HeaderView: View {
+    // Access the current color scheme (light or dark mode)
     @Environment(\.colorScheme) var colorScheme
+    // Access constants from the environment
+    @Environment(\.strings) var constantsStore
     
     var body: some View {
-        GeometryReader { geometry in
-            Image(colorScheme == .light ? "bg-light" : "bg-dark")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: geometry.size.width, height: 350)
-                .clipped()
-                .overlay {
-                    VStack(alignment: .leading) {
-                        Image("accountIcon")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                            .foregroundColor(.white)
-                        Spacer()
-                        Text("Welcome")
+        ZStack {
+            // Choose the appropriate image based on the color scheme
+            Image(
+                colorScheme == .light ?
+                constantsStore.lightModeImage :
+                constantsStore.darkModeImage
+            )
+            .resizable() // Make the image resizable
+            .scaledToFit() // Scale the image to fit within its space
+            .clipped() // Clip the image to its bounding box
+            .ignoresSafeArea() // Extend the image to the edges of the safe area
+            HStack {
+                VStack(
+                    alignment: .leading,
+                    spacing: constantsStore.mainVStackSpacing
+                ) {
+                    Image(constantsStore.accountIcon)
+                        .resizable()
+                        .frame(
+                            width: constantsStore.iconWidthHeight,
+                            height: constantsStore.iconWidthHeight
+                        )
+                        .foregroundColor(.white)
+                        .padding(
+                            .init(
+                                top: constantsStore.iconPaddingTop,
+                                leading: constantsStore.leadingPadding,
+                                bottom: constantsStore.zeroValue,
+                                trailing: constantsStore.zeroValue
+                            )
+                        )
+                    VStack(
+                        alignment: .leading,
+                        spacing: constantsStore.internalVStackSpacing
+                    ) {
+                        Text(constantsStore.welcome)
                             .fontWeight(.bold)
                             .font(.title)
                             .foregroundColor(.white)
-                            .frame(height: 40)
-                        
-                        Text("Company Name")
+                        Text(constantsStore.companyName)
                             .fontWeight(.semibold)
                             .font(.title3)
                             .foregroundColor(.white)
-                            .frame(height: 40)
-                        Spacer()
                     }
-                    .offset(x: -100, y: 50)
+                    .padding(
+                        .init(
+                            top: constantsStore.zeroValue,
+                            leading: constantsStore.leadingPadding,
+                            bottom: constantsStore.internalVStackBottonPadding,
+                            trailing: constantsStore.zeroValue
+                        )
+                    )
                 }
+                Spacer() // Add space between the VStack and the trailing edge
+            }
+            .padding(
+                .init(
+                    top: constantsStore.zeroValue,
+                    leading: constantsStore.zeroValue,
+                    bottom: constantsStore.mainVStackBottonPadding,
+                    trailing: constantsStore.zeroValue
+                )
+            )
         }
-        .frame(height: 350) // Ensure the height is fixed as before
     }
 }
 

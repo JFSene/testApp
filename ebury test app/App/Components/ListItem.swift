@@ -1,46 +1,41 @@
-//
-//  ListItem.swift
-//  ebury test app
-//
-//  Created by Joel Sene on 18/06/2024.
-//
-
 import SwiftUI
 
 struct ListItem: View {
     @State var account: TransactionsModel
+    @Environment(\.strings) var constantsStore // Environment variable for accessing localized strings
+    @Environment(\.colorScheme) var colorScheme // Environment variable for accessing color scheme
     
     var body: some View {
         HStack {
-            // Image with placeholder text
+            // Display currency image based on account's currency
             Image(account.amount.currency.lowercased())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 40, height: 40)
-                .padding(8)
-                .background(Color.white)
-                .cornerRadius(8)
+                .frame(width: constantsStore.itemImageFrame, height: constantsStore.itemImageFrame)
+                .padding(constantsStore.itemPadding)
+                .cornerRadius(constantsStore.itemCornerRadius)
                 .padding(.leading)
             
             VStack(alignment: .leading) {
-                Text(account.amount.currency)
+                // Display currency code and full name
+                Text(account.amount.currency.uppercased())
                     .font(.headline)
                 Text(account.amount.currencyFullName)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
             }
             
             Spacer()
             
-            Text("\(Double(account.amount.amount) ?? 00, specifier: "%.2f")")
+            // Display amount with currency formatted to two decimal places
+            Text("\(Double(account.amount.amount) ?? 0.00, specifier: "%.2f")")
                 .font(.headline)
                 .padding(.trailing)
         }
-        .padding(8) // Inner padding within the item
-        .background(Color.white)
-        .cornerRadius(8)
+        .padding(constantsStore.itemPadding) // Inner padding within the item
+        .background(colorScheme == .light ? constantsStore.lightMode : constantsStore.darkMode) // Background color based on color scheme
+        .cornerRadius(constantsStore.itemCornerRadius) // Corner radius for rounded corners
         .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2) // Outer shadow
-        .padding(.horizontal, 8) // Horizontal padding to control item width
-        .padding(.vertical, 4) // Vertical padding for spacing between items
+        .padding(.horizontal, constantsStore.itemHStackHorizontalPadding) // Horizontal padding to control item width
+        .padding(.vertical, constantsStore.itemHStackVerticalPadding) // Vertical padding for spacing between items
     }
 }

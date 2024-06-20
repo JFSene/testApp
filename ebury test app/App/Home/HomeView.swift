@@ -2,36 +2,41 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
-    // ViewModel for managing product data and state
+    // Access the view model and constants from the environment
     @EnvironmentObject var viewModel: HomeViewModel
-    @Environment(\.colorScheme) var colorScheme
-    @Query var transactionsListStore: [TransactionsModel]
+    @Environment(\.strings) var constantsStore
     
     var body: some View {
         VStack {
-            HeaderView(colorScheme: _colorScheme)
+            // Add the HeaderView and handle loading state overlay
+            HeaderView()
                 .ignoresSafeArea()
+                .frame(height: constantsStore.headerViewHeight)
                 .overlay {
                     if viewModel.isLoading {
                         LoaderView()
                             .frame(alignment: .center)
                     }
                 }
-            AccountsListView(account: transactionsListStore)
-                .padding(.top, -100)
-            
+            // Add the AccountsListView with top padding
+            AccountsListView()
+                .padding(.top, constantsStore.accountsListViewTopPadding)
         }
+        // Fetch transactions list when the view appears
         .onAppear {
-            if transactionsListStore.isEmpty {
-                viewModel.fetchTransactionsList()
-            }
+            viewModel.fetchTransactionsList()
         }
+        // Show an alert if there's an error
         .alert(isPresented: $viewModel.showAlert) {
             Alert(title: Text("Error"), message: Text(viewModel.errorMessage ?? "Unknown error"), dismissButton: .default(Text("OK")))
         }
     }
 }
 
+// Preview for the HomeView with a mock HomeViewModel
 #Preview {
     HomeView()
+        .environmentObject(HomeViewModel(modelContext: .none))
+        .modelContainer(previewContainer)
 }
+

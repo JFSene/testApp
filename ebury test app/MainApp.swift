@@ -1,31 +1,25 @@
-//
-//  MainApp.swift
-//  ebury test app
-//
-//  Created by Joel Sene on 14/06/2024.
-//
-
 import SwiftUI
 import SwiftData
 
 @main
 struct MainApp: App {
-    // Create a ModelContainer to manage the data of type Product
+    // Create a ModelContainer to manage the data of type TransactionsModel
     let container: ModelContainer
     
     var body: some Scene {
         WindowGroup {
-            ViewCoordinator()
-            // Set the model container for the entire app
+            TabMainView()
+                // Set the model container for the entire app
                 .modelContainer(container)
-            // Set viewModel as an enviroment object
+                // Set viewModel as an environment object
                 .environmentObject(HomeViewModel(modelContext: container.mainContext))
+                .environment(\.strings, ConstantsStore())
         }
     }
     
     init() {
         do {
-            // Create a ModelContainer for managing data of type 
+            // Create a ModelContainer for managing data of type TransactionsModel
             container = try ModelContainer(for: TransactionsModel.self)
         } catch {
             fatalError("Failed to create ModelContainer for TransactionsModel")

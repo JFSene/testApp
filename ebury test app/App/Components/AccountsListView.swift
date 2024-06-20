@@ -1,39 +1,52 @@
 import SwiftUI
+import SwiftData
 
 struct AccountsListView: View {
-    @State var account: [TransactionsModel]
+    // Fetch the list of transactions
+    @Query var transactionsListStore: [TransactionsModel]
+    // Access constants and color scheme from the environment
+    @Environment(\.strings) var constantsStore
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
-            // The list container with corner radius
             VStack {
                 ScrollView {
-                    Color.white.ignoresSafeArea()
-                    LazyVStack(spacing: 8) {
-                        // List header
+                    LazyVStack(spacing: constantsStore.lazyVStackSpacing) {
+                        // Header with title and "View All" button
                         HStack {
-                            Text("Your currencies")
+                            Text(constantsStore.listTitle)
+                                .foregroundColor(colorScheme == .light ? constantsStore.darkMode : constantsStore.lightMode)
+                                .padding(.leading, constantsStore.titlePaddingLeading)
                                 .font(.headline)
-                                .padding(.leading, 24)
                             Spacer()
-                            Text("View all")
+                            Text(constantsStore.viewAllButton)
                                 .foregroundColor(.blue)
                                 .padding(.trailing)
                         }
                         .padding(.top)
+                        .frame(height: constantsStore.internalHstackHeight)
                         
-                        ForEach(account, id: \.self) { transaction in
+                        // Display the list of transactions, limited to a prefix value
+                        ForEach(transactionsListStore.prefix(constantsStore.listPrefixValue), id: \.self) { transaction in
                             ListItem(account: transaction)
-                                .frame(height: 100)
-                                .padding(.horizontal, 12)
+                                .lineSpacing(constantsStore.listItemLineSpacing)
+                                .padding(.horizontal, constantsStore.listItemPaddingHorizontal)
                         }
                     }
                 }
+                .scrollDisabled(true) // Disable scrolling
             }
-            .background(Color.white)
-            .cornerRadius(20, corners: [.topLeft, .topRight])
-            .shadow(radius: 10)
+            .background(colorScheme == .light ? constantsStore.lightMode : .black)
+            .cornerRadius(constantsStore.listCornerRadius, corners: [.topLeft, .topRight])
+            .shadow(radius: constantsStore.listShadowRadius)
         }
         .edgesIgnoringSafeArea(.bottom) // Ignore bottom safe area to fit the list properly
     }
+}
+
+// Preview for the AccountsListView
+#Preview {
+    AccountsListView()
+        .modelContainer(previewContainer)
 }

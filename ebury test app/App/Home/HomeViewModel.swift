@@ -4,51 +4,50 @@ import SwiftData
 
 @MainActor
 final class HomeViewModel: ObservableObject {
-    @Published var errorMessage: String?
-    @Published var showAlert: Bool = false
-    @Published var isLoading: Bool = false
+    @Published var errorMessage: String? // Published property for error message to be shown in UI
+    @Published var showAlert: Bool = false // Published property to control visibility of alert
+    @Published var isLoading: Bool = false // Published property to indicate loading state
     
     var modelContext: ModelContext? // Context for data persistence
     
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>() // Store for Combine subscriptions
     
     init(modelContext: ModelContext?) {
-        self.modelContext = modelContext
+        self.modelContext = modelContext // Initialize with optional model context for data operations
     }
     
     func fetchTransactionsList() {
-        isLoading = true
-        errorMessage = nil
+        isLoading = true // Start loading indicator
+        errorMessage = nil // Clear any previous error message
         
         NetworkService.shared.fetchTransactions()
             .receive(on: DispatchQueue.main) // Ensure UI updates are on the main thread
             .sink { completion in
                 switch completion {
                 case .finished:
-                    self.isLoading = false
+                    self.isLoading = false // Stop loading indicator on successful completion
                 case .failure(let error):
-                    self.handleFetchError(error)
+                    self.handleFetchError(error) // Handle error if fetch fails
                 }
             } receiveValue: { transactions in
-                self.handleFetchSuccess(transactions)
+                self.handleFetchSuccess(transactions) // Handle successful fetch
             }
-            .store(in: &cancellables)
+            .store(in: &cancellables) // Store the subscription to manage its lifecycle
     }
     
     private func handleFetchSuccess(_ transactions: [TransactionsModel]) {
         transactions.forEach {
-            print("Fetched transaction ---->: \($0)")
-            self.modelContext?.insert($0)
+            self.modelContext?.insert($0) // Insert fetched transactions into the model context for persistence
         }
     }
     
     private func handleFetchError(_ error: Error) {
         if let customError = error as? CustomError {
-            self.errorMessage = customError.localizedDescription
+            self.errorMessage = customError.localizedDescription // Set specific error message if it's a custom error
         } else {
-            self.errorMessage = "An unexpected error occurred"
+            self.errorMessage = "An unexpected error occurred" // Default error message for unexpected errors
         }
-        self.showAlert = true
-        self.isLoading = false
+        self.showAlert = true // Display alert to user
+        self.isLoading = false // Stop loading indicator
     }
 }

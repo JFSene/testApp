@@ -46,7 +46,22 @@ struct ConstantsStore: EnvironmentKey {
     let ssLight = "splashscreen-light"
     let ssDark = "splashscreen-dark"
     let ssTitle = "Test App"
-   
+    //NoNetworkView
+    let noNetworkVStackSpacing: CGFloat = 20.0
+    let titleText = "Internet status:"
+    let noWifiImage = "wifi.slash"
+    let noWifiMainText = "There seems to be a problem with your Network Connection"
+    let noNetworkWidth: CGFloat = 400
+    let spacerHeight: CGFloat = 125
+    // ProdcutsView
+    let emptyStateImageLight = "emptystate-light"
+    let emptyStateImageDark = "emptystate-dark"
+    let productsPageTitle = "Products"
+    let productsPageSubtitle = "Coming Soon"
+    let productsPageDescription = "We are currently working in more features to offer the best experience"
+    let productsHeaderImageHeight: CGFloat = 150.0
+    let productsHeaderImageWidth: CGFloat = 400.0
+    let productsMainImageFrame: CGFloat = 250.0
     // Apps Main Colors
     let lightMode = Color(hex: 0xF9F9F9)
     let darkMode = Color(hex: 0x1C1C1E)

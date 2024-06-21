@@ -4,7 +4,10 @@ import SwiftData
 struct HomeView: View {
     // Access the view model and constants from the environment
     @EnvironmentObject var viewModel: HomeViewModel
+    // Access constants and strings from the environment
     @Environment(\.strings) var constantsStore
+    // Access the network monitor environment object
+    @Environment(NetworkMonitor.self) private var networkMonitor
     
     var body: some View {
         VStack {
@@ -18,13 +21,21 @@ struct HomeView: View {
                             .frame(alignment: .center)
                     }
                 }
-            // Add the AccountsListView with top padding
-            AccountsListView()
-                .padding(.top, constantsStore.accountsListViewTopPadding)
+            // check for network conection and presents the right view
+            if networkMonitor.isConnected {
+                // Add the AccountsListView with top padding
+                AccountsListView()
+                    .padding(.top, constantsStore.accountsListViewTopPadding)
+            } else {
+                NoNetworkView()
+                    .padding(.top, constantsStore.accountsListViewTopPadding)
+            }
         }
         // Fetch transactions list when the view appears
         .onAppear {
-            viewModel.fetchTransactionsList()
+            if networkMonitor.isConnected {
+                viewModel.fetchTransactionsList()
+            }
         }
         // Show an alert if there's an error
         .alert(isPresented: $viewModel.showAlert) {

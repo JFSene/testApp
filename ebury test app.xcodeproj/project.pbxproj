@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		171D780A2C25992A00F7B23C /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D78092C25992A00F7B23C /* NetworkMonitor.swift */; };
+		171D780D2C259A3A00F7B23C /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D780C2C259A3A00F7B23C /* NoNetworkView.swift */; };
 		174D3AA52C2386CF003674F2 /* ConstantsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D3AA42C2386CF003674F2 /* ConstantsStore.swift */; };
 		174D3AA72C238738003674F2 /* EnviromentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D3AA62C238738003674F2 /* EnviromentValues+Extensions.swift */; };
 		174D3AAA2C2495B1003674F2 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D3AA92C2495B1003674F2 /* PreviewContainer.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		171D78092C25992A00F7B23C /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		171D780C2C259A3A00F7B23C /* NoNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
 		174D3AA42C2386CF003674F2 /* ConstantsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsStore.swift; sourceTree = "<group>"; };
 		174D3AA62C238738003674F2 /* EnviromentValues+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnviromentValues+Extensions.swift"; sourceTree = "<group>"; };
 		174D3AA92C2495B1003674F2 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 		17994B562C1C7F3100A17922 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				171D780C2C259A3A00F7B23C /* NoNetworkView.swift */,
 				17994B572C1C7F4100A17922 /* HeaderView.swift */,
 				17994B592C1CA6FB00A17922 /* AccountsListView.swift */,
 				17994B6A2C21023A00A17922 /* ListItem.swift */,
@@ -180,6 +185,7 @@
 			children = (
 				17994B5F2C1E531F00A17922 /* CustomError.swift */,
 				17994B612C1E537E00A17922 /* NetworkService.swift */,
+				171D78092C25992A00F7B23C /* NetworkMonitor.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -409,10 +415,12 @@
 				17994B5A2C1CA6FB00A17922 /* AccountsListView.swift in Sources */,
 				17994B6B2C21023A00A17922 /* ListItem.swift in Sources */,
 				17994B552C1C7F0400A17922 /* HomeView.swift in Sources */,
+				171D780D2C259A3A00F7B23C /* NoNetworkView.swift in Sources */,
 				174D3AAA2C2495B1003674F2 /* PreviewContainer.swift in Sources */,
 				17E70B822C22240C00EC2860 /* ProductsView.swift in Sources */,
 				17994B692C1F78D200A17922 /* LoaderView.swift in Sources */,
 				17E70B842C22296A00EC2860 /* TabBar+Extensions.swift in Sources */,
+				171D780A2C25992A00F7B23C /* NetworkMonitor.swift in Sources */,
 				17994B652C1E53F000A17922 /* HomeViewModel.swift in Sources */,
 				17994B522C1C7BE300A17922 /* Colors+Extensions.swift in Sources */,
 			);

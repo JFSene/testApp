@@ -5,6 +5,8 @@ import SwiftData
 struct MainApp: App {
     // Create a ModelContainer to manage the data of type TransactionsModel
     let container: ModelContainer
+    // Monitor for Network connection
+    @State private var networkMonitor = NetworkMonitor()
     
     var body: some Scene {
         WindowGroup {
@@ -14,6 +16,7 @@ struct MainApp: App {
                 // Set viewModel as an environment object
                 .environmentObject(HomeViewModel(modelContext: container.mainContext))
                 .environment(\.strings, ConstantsStore())
+                .environment(networkMonitor)
         }
     }
     

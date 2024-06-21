@@ -5,8 +5,9 @@ struct AccountsListView: View {
     // Fetch the list of transactions
     @Query var transactionsListStore: [TransactionsModel]
     // Access constants and color scheme from the environment
-    @Environment(\.strings) var constantsStore
     @Environment(\.colorScheme) var colorScheme
+    // Access constants and strings from the environment
+    @Environment(\.strings) var constantsStore
     
     var body: some View {
         VStack {

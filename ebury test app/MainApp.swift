@@ -7,16 +7,26 @@ struct MainApp: App {
     let container: ModelContainer
     // Monitor for Network connection
     @State private var networkMonitor = NetworkMonitor()
+    @StateObject private var biometricAuthManager = BiometricAuthManager()
     
     var body: some Scene {
         WindowGroup {
-            TabMainView()
-                // Set the model container for the entire app
-                .modelContainer(container)
-                // Set viewModel as an environment object
-                .environmentObject(HomeViewModel(modelContext: container.mainContext))
-                .environment(\.strings, ConstantsStore())
-                .environment(networkMonitor)
+            Group {
+                if biometricAuthManager.isAuthenticated {
+                    TabMainView()
+                    // Set the model container for the entire app
+                        .modelContainer(container)
+                    // Set viewModel as an environment object
+                        .environmentObject(HomeViewModel(modelContext: ModelContextAdapter(modelContext: container.mainContext)))
+                        .environment(\.strings, ConstantsStore())
+                        .environment(networkMonitor)
+                } else {
+                    AuthenticationView(biometricAuthManager: biometricAuthManager)
+                }
+            }
+            .onAppear {
+                biometricAuthManager.authenticateUser()
+            }
         }
     }
     

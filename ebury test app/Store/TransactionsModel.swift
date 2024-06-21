@@ -92,3 +92,4 @@ class Amount: Identifiable, Codable {
         try container.encode(currency, forKey: .currency)
     }
 }
+

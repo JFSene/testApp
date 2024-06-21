@@ -8,12 +8,12 @@ final class HomeViewModel: ObservableObject {
     @Published var showAlert: Bool = false // Published property to control visibility of alert
     @Published var isLoading: Bool = false // Published property to indicate loading state
     
-    var modelContext: ModelContext? // Context for data persistence
-    
     private var cancellables = Set<AnyCancellable>() // Store for Combine subscriptions
     
-    init(modelContext: ModelContext?) {
-        self.modelContext = modelContext // Initialize with optional model context for data operations
+    var modelContext: ModelContextProtocol?  // Context for data persistence
+    
+    init(modelContext: ModelContextProtocol?) {
+        self.modelContext = modelContext
     }
     
     func fetchTransactionsList() {

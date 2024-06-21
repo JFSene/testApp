@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		171D780A2C25992A00F7B23C /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D78092C25992A00F7B23C /* NetworkMonitor.swift */; };
 		171D780D2C259A3A00F7B23C /* NoNetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D780C2C259A3A00F7B23C /* NoNetworkView.swift */; };
+		171D78102C25B6A200F7B23C /* BiometricAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D780F2C25B6A200F7B23C /* BiometricAuthManager.swift */; };
+		171D78122C25B79B00F7B23C /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D78112C25B79B00F7B23C /* AuthenticationView.swift */; };
+		171D78152C25C0A300F7B23C /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D78142C25C0A300F7B23C /* HomeViewModelTests.swift */; };
+		171D78172C25DD6300F7B23C /* ModelContextAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171D78162C25DD6300F7B23C /* ModelContextAdapter.swift */; };
 		174D3AA52C2386CF003674F2 /* ConstantsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D3AA42C2386CF003674F2 /* ConstantsStore.swift */; };
 		174D3AA72C238738003674F2 /* EnviromentValues+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D3AA62C238738003674F2 /* EnviromentValues+Extensions.swift */; };
 		174D3AAA2C2495B1003674F2 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D3AA92C2495B1003674F2 /* PreviewContainer.swift */; };
@@ -28,7 +32,6 @@
 		17CD42F72C1C5B5C00FCF27D /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CD42F62C1C5B5C00FCF27D /* MainApp.swift */; };
 		17D47C692C1BA94300296F62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D47C682C1BA94300296F62 /* Assets.xcassets */; };
 		17D47C6C2C1BA94300296F62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17D47C6B2C1BA94300296F62 /* Preview Assets.xcassets */; };
-		17D47C762C1BA94300296F62 /* ebury_test_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D47C752C1BA94300296F62 /* ebury_test_appTests.swift */; };
 		17D47C802C1BA94300296F62 /* ebury_test_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D47C7F2C1BA94300296F62 /* ebury_test_appUITests.swift */; };
 		17D47C822C1BA94300296F62 /* ebury_test_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D47C812C1BA94300296F62 /* ebury_test_appUITestsLaunchTests.swift */; };
 		17E70B822C22240C00EC2860 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E70B812C22240C00EC2860 /* ProductsView.swift */; };
@@ -55,6 +58,11 @@
 /* Begin PBXFileReference section */
 		171D78092C25992A00F7B23C /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		171D780C2C259A3A00F7B23C /* NoNetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoNetworkView.swift; sourceTree = "<group>"; };
+		171D780F2C25B6A200F7B23C /* BiometricAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthManager.swift; sourceTree = "<group>"; };
+		171D78112C25B79B00F7B23C /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		171D78132C25BC1600F7B23C /* ebury-test-app-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "ebury-test-app-Info.plist"; sourceTree = SOURCE_ROOT; };
+		171D78142C25C0A300F7B23C /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		171D78162C25DD6300F7B23C /* ModelContextAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContextAdapter.swift; sourceTree = "<group>"; };
 		174D3AA42C2386CF003674F2 /* ConstantsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantsStore.swift; sourceTree = "<group>"; };
 		174D3AA62C238738003674F2 /* EnviromentValues+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnviromentValues+Extensions.swift"; sourceTree = "<group>"; };
 		174D3AA92C2495B1003674F2 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
@@ -76,7 +84,6 @@
 		17D47C682C1BA94300296F62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17D47C6B2C1BA94300296F62 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17D47C712C1BA94300296F62 /* ebury test appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ebury test appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		17D47C752C1BA94300296F62 /* ebury_test_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ebury_test_appTests.swift; sourceTree = "<group>"; };
 		17D47C7B2C1BA94300296F62 /* ebury test appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ebury test appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		17D47C7F2C1BA94300296F62 /* ebury_test_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ebury_test_appUITests.swift; sourceTree = "<group>"; };
 		17D47C812C1BA94300296F62 /* ebury_test_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ebury_test_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -109,6 +116,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		171D780E2C25B68E00F7B23C /* Biometrics */ = {
+			isa = PBXGroup;
+			children = (
+				171D780F2C25B6A200F7B23C /* BiometricAuthManager.swift */,
+			);
+			path = Biometrics;
+			sourceTree = "<group>";
+		};
 		174D3AA82C2495A0003674F2 /* PreviewHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				17994B5D2C1E52FE00A17922 /* TransactionsModel.swift */,
+				171D78162C25DD6300F7B23C /* ModelContextAdapter.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -202,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				174D3AAD2C24A3DC003674F2 /* Launch Screen.storyboard */,
+				171D78112C25B79B00F7B23C /* AuthenticationView.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -229,6 +246,8 @@
 		17D47C612C1BA94100296F62 /* ebury test app */ = {
 			isa = PBXGroup;
 			children = (
+				171D78132C25BC1600F7B23C /* ebury-test-app-Info.plist */,
+				171D780E2C25B68E00F7B23C /* Biometrics */,
 				17CD42F62C1C5B5C00FCF27D /* MainApp.swift */,
 				17CD42E72C1C529C00FCF27D /* Store */,
 				17CD42E62C1C528B00FCF27D /* Network */,
@@ -250,7 +269,7 @@
 		17D47C742C1BA94300296F62 /* ebury test appTests */ = {
 			isa = PBXGroup;
 			children = (
-				17D47C752C1BA94300296F62 /* ebury_test_appTests.swift */,
+				171D78142C25C0A300F7B23C /* HomeViewModelTests.swift */,
 			);
 			path = "ebury test appTests";
 			sourceTree = "<group>";
@@ -405,6 +424,7 @@
 			files = (
 				17994B582C1C7F4100A17922 /* HeaderView.swift in Sources */,
 				17994B602C1E531F00A17922 /* CustomError.swift in Sources */,
+				171D78172C25DD6300F7B23C /* ModelContextAdapter.swift in Sources */,
 				17994B5E2C1E52FE00A17922 /* TransactionsModel.swift in Sources */,
 				17994B622C1E537E00A17922 /* NetworkService.swift in Sources */,
 				17994B4B2C1C6AF600A17922 /* TabMainView.swift in Sources */,
@@ -413,6 +433,7 @@
 				17994B5C2C1CAA2500A17922 /* CornerRadius+Extensions.swift in Sources */,
 				174D3AA72C238738003674F2 /* EnviromentValues+Extensions.swift in Sources */,
 				17994B5A2C1CA6FB00A17922 /* AccountsListView.swift in Sources */,
+				171D78102C25B6A200F7B23C /* BiometricAuthManager.swift in Sources */,
 				17994B6B2C21023A00A17922 /* ListItem.swift in Sources */,
 				17994B552C1C7F0400A17922 /* HomeView.swift in Sources */,
 				171D780D2C259A3A00F7B23C /* NoNetworkView.swift in Sources */,
@@ -420,6 +441,7 @@
 				17E70B822C22240C00EC2860 /* ProductsView.swift in Sources */,
 				17994B692C1F78D200A17922 /* LoaderView.swift in Sources */,
 				17E70B842C22296A00EC2860 /* TabBar+Extensions.swift in Sources */,
+				171D78122C25B79B00F7B23C /* AuthenticationView.swift in Sources */,
 				171D780A2C25992A00F7B23C /* NetworkMonitor.swift in Sources */,
 				17994B652C1E53F000A17922 /* HomeViewModel.swift in Sources */,
 				17994B522C1C7BE300A17922 /* Colors+Extensions.swift in Sources */,
@@ -430,7 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17D47C762C1BA94300296F62 /* ebury_test_appTests.swift in Sources */,
+				171D78152C25C0A300F7B23C /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -589,6 +611,8 @@
 				DEVELOPMENT_TEAM = VRPSBVV63P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ebury-test-app-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses Face ID to securely authenticate your identity.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -620,6 +644,8 @@
 				DEVELOPMENT_TEAM = VRPSBVV63P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ebury-test-app-Info.plist";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app uses Face ID to securely authenticate your identity.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
